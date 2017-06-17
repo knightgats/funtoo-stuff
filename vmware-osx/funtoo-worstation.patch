@@ -1,0 +1,23 @@
+--- unlocker.py 2017-05-26 10:13:14.716697349 -0300
++++ unlocker.py 2017-06-17 11:14:33.707422098 -0300
+@@ -367,16 +367,13 @@
+         vmx_stats = joinpath(vmx_path, 'vmware-vmx-stats')
+ 
+     elif osname == 'linux':
+-        vmx_path = '/usr/lib/vmware/bin/'
++        vmx_path = '/opt/vmware/lib/vmware/bin'
+         vmx = joinpath(vmx_path, 'vmware-vmx')
+         vmx_debug = joinpath(vmx_path, 'vmware-vmx-debug')
+         vmx_stats = joinpath(vmx_path, 'vmware-vmx-stats')
+-        vmx_version = subprocess.check_output(["vmplayer", "-v"])
+-        if vmx_version.startswith('VMware Player 12'):
+-            vmx_so = True
+-            vmwarebase = '/usr/lib/vmware/lib/libvmwarebase.so/libvmwarebase.so'
+-        else:
+-            vmwarebase = '/usr/lib/vmware/lib/libvmwarebase.so.0/libvmwarebase.so.0'
++        vmx_version = 'VMware Workstation 12'
++        vmx_so = True
++        vmwarebase = '/opt/vmware/lib/vmware/lib/libvmwarebase.so/libvmwarebase.so'
+ 
+     elif osname == 'vmkernel':
+         vmx_path = os.path.dirname(os.path.abspath(__file__))
